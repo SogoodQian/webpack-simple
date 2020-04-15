@@ -1,5 +1,9 @@
 const path = require('path');
 
+// 引入HtmlWebpackPlugin
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+
 module.exports = {
     // entry: './src/index.js',  // 单个入口文件
     // 多个入口文件
@@ -12,6 +16,13 @@ module.exports = {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, 'dist')
     },
+    plugins:[
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            // title:"插件测试",
+            template:"./src/index.html"
+        })
+    ],
     module:{
         rules:[
             {
@@ -30,5 +41,3 @@ module.exports = {
         ]
     }
 };
-
-// 课间休息中
